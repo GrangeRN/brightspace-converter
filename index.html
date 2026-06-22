@@ -289,12 +289,17 @@
             const getBloomsDifficulty = (bloomsLevel) => {
                 if (!bloomsLevel) return 1;
                 const level = bloomsLevel.toLowerCase();
-                if (level.includes("remember")) return 1;
-                if (level.includes("understand") || level.includes("comprehension")) return 2;
-                if (level.includes("apply") || level.includes("application")) return 3;
-                if (level.includes("analyz")) return 4;
-                if (level.includes("evaluat") || level.includes("creat") || level.includes("synthesis")) return 5;
-                return 1;
+                // Level 1: Remember/Knowledge
+                if (level.includes("remember") || level.includes("knowledge") || level.includes("recall")) return 1;
+                // Level 2: Understand/Comprehension
+                if (level.includes("understand") || level.includes("comprehension") || level.includes("comprehend")) return 2;
+                // Level 3: Apply/Application
+                if (level.includes("appl")) return 3;  // matches apply, application, applying, applied
+                // Level 4: Analyze/Analysis
+                if (level.includes("analy")) return 4;  // matches analyze, analysis, analyzing, analytical
+                // Level 5: Evaluate/Create/Synthesis
+                if (level.includes("evaluat") || level.includes("creat") || level.includes("synthesis") || level.includes("synthesiz")) return 5;
+                return 1;  // Default to Remember if no match
             };
 
 
